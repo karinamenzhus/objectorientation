@@ -8,7 +8,7 @@
 <body>
     <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
     <script>
-var Car = function (x, y) {
+let Car = function (x, y) {
     this.x = x;
     this.y = y;
     this.speed = 5;
@@ -58,13 +58,13 @@ Car.prototype.updatePosition = function () {
     });
 };
 
-var tesla = new Car(20, 20);
-var nissan = new Car(100, 200);
+let tesla = new Car(20, 20);
+let nissan = new Car(100, 200);
 
 
 setInterval(function () {
-    var teslaShift = Math.floor(Math.random() * 6); 
-    var nissanShift = Math.floor(Math.random() * 6); 
+    let teslaShift = Math.floor(Math.random() * 6); 
+    let nissanShift = Math.floor(Math.random() * 6); 
 
     tesla.moveRight(teslaShift); 
     nissan.moveRight(nissanShift);
