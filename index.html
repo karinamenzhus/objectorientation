@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+    <script>
+var Car = function (x, y) {
+    this.x = x;
+    this.y = y;
+    this.speed = 5;
+    this.draw();
+};
+
+Car.prototype.draw = function () {
+    var carHtml = '<img src="https://i.playground.ru/p/mjckdxAimUtR1ZLKnPgzkg.jpeg">';
+    this.carElement = $(carHtml);
+    this.carElement.css({
+        position: "absolute",
+        left: this.x,
+        top: this.y,
+        width: "100px", 
+        height: "auto" 
+    });
+
+    $("body").append(this.carElement);
+};
+
+
+Car.prototype.moveLeft = function (distance) {
+    this.x -= distance;
+    this.updatePosition();
+};
+
+Car.prototype.moveRight = function (distance) {
+    this.x += distance;
+    this.updatePosition();
+};
+
+Car.prototype.moveUp = function (distance) {
+    this.y -= distance;
+    this.updatePosition();
+};
+
+Car.prototype.moveDown = function (distance) {
+    this.y += distance; 
+    this.updatePosition();
+};
+
+
+Car.prototype.updatePosition = function () {
+    this.carElement.css({
+        left: this.x,
+        top: this.y
+    });
+};
+
+var tesla = new Car(20, 20);
+var nissan = new Car(100, 200);
+
+
+setInterval(function () {
+    var teslaShift = Math.floor(Math.random() * 6); 
+    var nissanShift = Math.floor(Math.random() * 6); 
+
+    tesla.moveRight(teslaShift); 
+    nissan.moveRight(nissanShift);
+
+}, 30);
+
+    </script>
+</body>
+</html>
